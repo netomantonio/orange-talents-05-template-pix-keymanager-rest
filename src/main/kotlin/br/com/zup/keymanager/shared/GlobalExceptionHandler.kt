@@ -21,8 +21,9 @@ class GlobalExceptionHandler : ExceptionHandler<StatusRuntimeException, HttpResp
             Status.ALREADY_EXISTS.code -> Pair(HttpStatus.UNPROCESSABLE_ENTITY, statusDescription)
             else -> {
                 LOGGER.error("Erro inesperado '${exception.javaClass.name}' ao processar requisição", exception)
-                Pair(HttpStatus.INTERNAL_SERVER_ERROR, "Não foi possível completar a requisição devido ao erro: " +
-                        "$statusDescription (${statusCode})")
+                Pair(HttpStatus.INTERNAL_SERVER_ERROR, "Não foi possível completar a requisição")
+//                Pair(HttpStatus.INTERNAL_SERVER_ERROR, "Não foi possível completar a requisição devido ao erro: " +
+//                        "$statusDescription (${statusCode})")
             }
         }
         return HttpResponse.status<JsonError>(httpStatus).body(JsonError(message))

@@ -1,7 +1,6 @@
 package br.com.zup.keymanager.shared.validations
 
 import br.com.zup.keymanager.NovaChaveRequest
-import io.micronaut.core.annotation.AnnotationValue
 import javax.inject.Singleton
 import javax.validation.*
 import kotlin.annotation.AnnotationRetention.RUNTIME
