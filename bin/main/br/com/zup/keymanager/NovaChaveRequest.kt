@@ -4,9 +4,9 @@ import br.com.caelum.stella.validation.CPFValidator
 import br.com.zup.*
 import br.com.zup.keymanager.shared.validations.ValidPixKey
 import io.micronaut.core.annotation.Introspected
-import io.micronaut.validation.validator.constraints.ConstraintValidatorContext
 import io.micronaut.validation.validator.constraints.EmailValidator
 import java.util.*
+import javax.validation.ConstraintValidatorContext
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 

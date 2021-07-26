@@ -1,12 +1,8 @@
 package br.com.zup.keymanager.shared.validations
 
 import br.com.zup.keymanager.NovaChaveRequest
-import io.micronaut.core.annotation.AnnotationValue
-import io.micronaut.validation.validator.constraints.ConstraintValidator
-import io.micronaut.validation.validator.constraints.ConstraintValidatorContext
 import javax.inject.Singleton
-import javax.validation.Constraint
-import javax.validation.Payload
+import javax.validation.*
 import kotlin.annotation.AnnotationRetention.RUNTIME
 import kotlin.annotation.AnnotationTarget.CLASS
 import kotlin.annotation.AnnotationTarget.TYPE
@@ -17,7 +13,7 @@ import kotlin.reflect.KClass
 @Retention(RUNTIME)
 @Constraint(validatedBy = [ValidPixKeyValidator::class])
 annotation class ValidPixKey(
-    val message: String = "chave Pix inválida (\${validatedValue.tipo})",
+    val message: String = "chave Pix inválida '\${validatedValue.tipoDeChave}'",
     val groups: Array<KClass<Any>> = [],
     val payload: Array<KClass<Payload>> = [],
 )
@@ -27,7 +23,6 @@ class ValidPixKeyValidator: ConstraintValidator<ValidPixKey, NovaChaveRequest> {
 
     override fun isValid(
         value: NovaChaveRequest?,
-        annotationMetadata: AnnotationValue<ValidPixKey>,
         context: ConstraintValidatorContext
     ): Boolean {
 
