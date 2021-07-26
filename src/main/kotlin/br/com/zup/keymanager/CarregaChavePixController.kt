@@ -34,4 +34,15 @@ class CarregaChavePixController (
 
         return HttpResponse.ok(DetalheChavePixResponse(response))
     }
+
+    @Get("/pix/")
+    fun lista(clienteId: String) : HttpResponse<Any> {
+        LOGGER.info("Listando chaves pix do cliente: $clienteId")
+
+        val pix  = listaChavesPixClient.listar(ListaChavesRequest.newBuilder().setClienteId(clienteId).build())
+
+        val chaves = pix.chavesList.map { ChavePixResponse(it) }
+
+        return HttpResponse.ok(chaves)
+    }
 }
