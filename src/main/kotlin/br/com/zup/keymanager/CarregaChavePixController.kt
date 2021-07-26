@@ -8,7 +8,7 @@ import io.micronaut.http.annotation.*
 import org.slf4j.LoggerFactory
 
 @Controller("/api/v1/clientes/{clienteId}")
-class DetalhaChavePixController (
+class CarregaChavePixController (
     val carregaChavePixClient: KeyManagerCarregaGrpcServiceBlockingStub,
     val listaChavesPixClient: KeyManagerListaGrpcServiceBlockingStub) {
 
